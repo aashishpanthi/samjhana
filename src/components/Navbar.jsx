@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,17 +13,38 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import "./styles/Navbar.css";
+import { UserContext } from "../userContext";
+import firebase from "firebase/compat/app";
+import firebaseConfig from "../firebase"
 
 const pages = [
   { name: "Products", link: "/products" },
   { name: "Pricing", link: "/pricing" },
   { name: "Blog", link: "/blog" },
 ];
-const settings = ["Profile", "My posts", "Dashboard", "Logout"];
+const settings = ["My posts", "Dashboard"];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  firebaseConfig();
+  const userInfo = useContext(UserContext);
+  const { user, setUser } = userInfo;
+
+  // Listen to the Firebase Auth state and set the local state.
+  useEffect(() => {
+    const unregisterAuthObserver = firebase
+      .auth()
+      .onAuthStateChanged((u) => {
+        if (u) {
+          setUser(u);
+          // console.log(user.uid);
+        } else {
+          setUser(null);
+        }
+      });
+    return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
+  }, []);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -40,8 +61,13 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
+  const logout = () =>{
+    firebase.auth().signOut();
+    handleCloseUserMenu();
+  }
+
   return (
-    <AppBar position="static">
+    <AppBar color="secondary" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link style={{ color: "inherit", textDecoration: "none" }} to="/">
@@ -111,8 +137,8 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-              component={Link} 
-              to={page.link}
+                component={Link}
+                to={page.link}
                 key={page.name}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
@@ -122,35 +148,49 @@ const Navbar = () => {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="More options">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="name" src="" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+          {user == null ? (
+            <Button
+              component={Link}
+              to="/login"
+              variant="outlined"
+              style={{ color: "inherit", borderColor: "inherit" }}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+              Login
+            </Button>
+          ) : (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="More options">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="name" src={user._delegate.photoURL} />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
+                  <MenuItem onClick={logout}>
+                    <Typography textAlign="center">Logout</Typography>
+                  </MenuItem>
+              </Menu>
+            </Box>
+          )}
         </Toolbar>
       </Container>
     </AppBar>
