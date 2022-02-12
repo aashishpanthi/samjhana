@@ -17,8 +17,8 @@ import { UserContext } from "../userContext";
 import firebase from "../firebase"
 
 const pages = [
-  { name: "Products", link: "/products" },
-  { name: "Pricing", link: "/pricing" },
+  { name: "Generate card", link: "/generatecard" },
+  { name: "New post", link: "/new" },
   { name: "Blog", link: "/blog" },
 ];
 const settings = ["My posts", "Dashboard"];
