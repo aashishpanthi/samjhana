@@ -1,7 +1,7 @@
 // Import FirebaseAuth and firebase.
 import { useEffect, useState, useContext } from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import firebase from "firebase/compat/app";
+import firebase from "../firebase";
 import "firebase/compat/auth";
 import "./styles/login.css";
 import { useNavigate } from "react-router-dom";

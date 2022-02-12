@@ -14,8 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import "./styles/Navbar.css";
 import { UserContext } from "../userContext";
-import firebase from "firebase/compat/app";
-import firebaseConfig from "../firebase"
+import firebase from "../firebase"
 
 const pages = [
   { name: "Products", link: "/products" },
@@ -27,7 +26,6 @@ const settings = ["My posts", "Dashboard"];
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-  firebaseConfig();
   const userInfo = useContext(UserContext);
   const { user, setUser } = userInfo;
 
