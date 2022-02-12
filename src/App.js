@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import PageNotFound from "./pages/PageNotFound";
 import Home from "./pages/Home";
 import "./App.css";
+import NewPost from "./pages/NewPost";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -15,6 +16,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
+          <Route exact path="/new" element={<NewPost />} />
           <Route exact path="/login" element={<SignInScreen />} />
           <Route exact path="/" element={<Home />} />
           <Route path="*" element={<PageNotFound />} />
