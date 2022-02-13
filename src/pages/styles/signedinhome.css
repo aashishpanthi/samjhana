@@ -1,0 +1,17 @@
+.posts-section{
+    margin: .5rem auto;
+    padding: 1rem;
+    max-width: 1250px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.posts-section .posts{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin:1rem 0;
+    padding:.5rem;
+}

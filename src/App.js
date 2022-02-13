@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import "./App.css";
 import NewPost from "./pages/NewPost";
 import GenerateCard from "./pages/GenerateCard";
+import SignedInHome from "./pages/SignedInHome";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -20,7 +21,7 @@ function App() {
           <Route exact path="/new" element={<NewPost />} />
           <Route exact path="/generatecard" element={<GenerateCard />} />
           <Route exact path="/login" element={<SignInScreen />} />
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={user !== null ? (<SignedInHome />):(<Home />)} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>

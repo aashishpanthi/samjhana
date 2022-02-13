@@ -48,6 +48,10 @@ const NewPost = () => {
       });
   };
 
+  if(!user){
+    return <div>You need to login to create a post</div>
+  }
+
   return (
     <Container style={{ marginTop: "2rem" }} maxWidth="lg">
       <ToastContainer
