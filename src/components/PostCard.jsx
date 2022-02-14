@@ -5,10 +5,12 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const PostCard = () => {
+const PostCard = ({post}) => {
+  const { body, title, createdAt, creator, id } = post;
+
   return (
     <Card sx={{ maxWidth: 345 }} style={{margin:"5px"}}>
-      <Link to="/posts/" style={{textDecoration: "inherit", color:"inherit"}}>
+      <Link to={`/posts/${id}`} style={{textDecoration: "inherit", color:"inherit"}}>
         <CardActionArea>
           <CardMedia
             component="img"
@@ -18,11 +20,10 @@ const PostCard = () => {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              Lizard
+              {title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
+              {body}
             </Typography>
           </CardContent>
         </CardActionArea>
