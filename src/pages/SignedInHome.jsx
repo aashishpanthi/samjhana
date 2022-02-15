@@ -26,12 +26,12 @@ function SignedInHome() {
 
   return (
     <section className="posts-section">
-      <FeaturedPost />
+      {postsList && (<FeaturedPost post={postsList[0]} />)}
       <div className="posts">
         {postsList && postsList.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
-      </div>
+      </div> 
     </section>
   );
 }

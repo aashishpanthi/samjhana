@@ -8,23 +8,22 @@ import CardMedia from "@mui/material/CardMedia";
 import { Link } from "react-router-dom";
 
 const FeaturedPost = (props) => {
-  // const { post } = props;
+  const { id, title, description, createdAt, image } = props.post;
 
   return (
     <Grid item xs={12}>
-      <Link to="/posts/" style={{textDecoration:"inherit"}}>
+      <Link to={`/posts/${id}`} style={{textDecoration:"inherit"}}>
         <CardActionArea>
           <Card sx={{ display: "flex" }}>
             <CardContent sx={{ flex: 1 }}>
               <Typography component="h2" variant="h5">
-                Title of the post
+                {title}
               </Typography>
               <Typography variant="subtitle1" color="text.secondary">
-                23 Aug 2022
+                {new Date(createdAt).toString().substring(4, 15)}
               </Typography>
               <Typography variant="subtitle1" paragraph>
-                Hey there! I am a very simple card. I am good at containing
-                small bits of information.
+                {description}
               </Typography>
               <Typography variant="subtitle1" color="primary">
                 Continue reading...
@@ -33,8 +32,8 @@ const FeaturedPost = (props) => {
             <CardMedia
               component="img"
               sx={{ width: 160, display: { xs: "none", sm: "block" } }}
-              image={`https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80`}
-              alt={"text"}
+              image={image}
+              alt={title}
             />
           </Card>
         </CardActionArea>
@@ -43,14 +42,14 @@ const FeaturedPost = (props) => {
   );
 };
 
-// FeaturedPost.propTypes = {
-//   post: PropTypes.shape({
-//     date: PropTypes.string.isRequired,
-//     description: PropTypes.string.isRequired,
-//     image: PropTypes.string.isRequired,
-//     imageLabel: PropTypes.string.isRequired,
-//     title: PropTypes.string.isRequired,
-//   }).isRequired,
-// };
+FeaturedPost.propTypes = {
+  post: PropTypes.shape({
+    createdAt: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default FeaturedPost;
