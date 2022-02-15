@@ -19,9 +19,9 @@ import firebase from "../firebase"
 const pages = [
   { name: "Generate card", link: "/generatecard" },
   { name: "New post", link: "/new" },
-  { name: "Blog", link: "/blog" },
+  { name: "My posts", link: "/myposts" },
 ];
-const settings = ["My posts", "Dashboard"];
+const settings = [];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
