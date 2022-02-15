@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Crete+Round:ital@1&display=swap");
-
 .card-generate-section {
   min-height: 80vh;
   display: flex;
@@ -46,7 +44,7 @@
   top: 50%;
   font-size: 1.1rem;
   max-width: 250px;
-  font-family: "Crete Round", serif;
+  font-family: "Crete-Round", serif;
   text-align: center;
 }
 
@@ -59,7 +57,7 @@
   top: 75%;
   font-size: 0.9rem;
   max-width: 125px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto-Medium", sans-serif;
   text-align: center;
 }
 

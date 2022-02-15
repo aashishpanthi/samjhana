@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: "Cookie";
+  src: local("Cookie"),
+   url("./fonts/Cookie/Cookie-Regular.ttf") format("truetype");
+  font-weight: bold;
+  }
+
+@font-face {
+  font-family: "Crete-Round";
+  src: local("Crete-Round"),
+   url("./fonts/Crete_Round/CreteRound-Italic.ttf") format("truetype");
+  font-weight: bold;
+  }
+  
+@font-face {
+  font-family: "Roboto-Medium";
+  src: local("Roboto-Medium"),
+   url("./fonts/Roboto/Roboto-Medium.ttf") format("truetype");
+  font-weight: bold;
+  }
+  
