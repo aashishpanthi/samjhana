@@ -24,15 +24,18 @@
 }
 
 .card-container .main-text {
+  position: relative;
   color: black;
   padding: 2px 5px;
   margin: 2px;
-  font-family: "Cookie", cursive;
+  font-family: cursive;
   position: absolute;
-  left: 20%;
+  left: 50%;
   top: 30%;
-  font-size: 3.25rem;
-  max-width: 250px;
+  transform: translateX(-50%);
+  font-size: 2.25rem;
+  width: 100%;
+  max-width: 275px;
 }
 
 .card-container .sub-text {
@@ -40,11 +43,13 @@
   padding: 2px 5px;
   margin: 2px;
   position: absolute;
-  left: 20%;
+  left: 50%;
   top: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 275px;
   font-size: 1.1rem;
-  max-width: 250px;
-  font-family: "Crete-Round", serif;
+  font-family:"Crete-Round" ,sans-serif;
   text-align: center;
 }
 
