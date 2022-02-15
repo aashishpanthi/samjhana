@@ -8,8 +8,11 @@ import CardMedia from "@mui/material/CardMedia";
 import { Link } from "react-router-dom";
 
 const FeaturedPost = (props) => {
+  if(!props.post){
+    return <Typography variant="h6">No post found</Typography>;
+  }
+  
   const { id, title, description, createdAt, image } = props.post;
-
   return (
     <Grid item xs={12}>
       <Link to={`/posts/${id}`} style={{textDecoration:"inherit"}}>
@@ -40,16 +43,6 @@ const FeaturedPost = (props) => {
       </Link>
     </Grid>
   );
-};
-
-FeaturedPost.propTypes = {
-  post: PropTypes.shape({
-    createdAt: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    body: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
 export default FeaturedPost;

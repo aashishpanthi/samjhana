@@ -67,6 +67,15 @@ const MyPosts = () => {
     setPage(0);
   };
 
+  const deletePost = (id) => {
+    setLoading(true);
+    firebase
+      .database()
+      .ref("Posts/" + id)
+      .remove();
+    setLoading(false);
+  };
+
   useEffect(() => {
     firebase
       .database()
@@ -87,16 +96,17 @@ const MyPosts = () => {
       });
   }, []);
 
-  const rows = postsList.map(
-    ({ id, title, description, createdAt, updatedAt }) =>
-      createData(
-        id,
-        title,
-        description,
-        new Date(createdAt).toString().substring(4, 15),
-        new Date(updatedAt).toString().substring(4, 15)
+  const rows = postsList
+    ? postsList.map(({ id, title, description, createdAt, updatedAt }) =>
+        createData(
+          id,
+          title,
+          description,
+          new Date(createdAt).toString().substring(4, 15),
+          new Date(updatedAt).toString().substring(4, 15)
+        )
       )
-  );
+    : null;
 
   if (!user) {
     return <div>You need to login to create a post</div>;
@@ -121,7 +131,11 @@ const MyPosts = () => {
 
         {postsList ? (
           postsList.length === 0 ? (
-            <Typography variant="h6" component="div">
+            <Typography
+              variant="h6"
+              component="div"
+              style={{ padding: "0 1rem" }}
+            >
               You have not published any post yet
             </Typography>
           ) : (
@@ -177,7 +191,7 @@ const MyPosts = () => {
 
                                   <LoadingButton
                                     color="error"
-                                    onClick={() => setLoading(true)}
+                                    onClick={() => deletePost(row.id)}
                                     loading={loading}
                                     loadingPosition="start"
                                     startIcon={<DeleteIcon />}
@@ -206,7 +220,7 @@ const MyPosts = () => {
         <TablePagination
           rowsPerPageOptions={[7, 15, 25]}
           component="div"
-          count={rows.length}
+          count={rows ? (rows.length): 0}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
