@@ -1,4 +1,5 @@
 import firebase from "firebase/compat/app";
+import { getStorage } from "firebase/storage";
 
 // Configure Firebase.
 const firebaseConfig = {
@@ -12,6 +13,7 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+export const storage = getStorage(firebaseApp);
 
 export default firebase 
