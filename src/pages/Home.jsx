@@ -1,4 +1,5 @@
 import { Container, Typography, Box, Button } from "@mui/material";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -13,6 +14,27 @@ const Home = () => {
         justifyContent: "center",
       }}
     >
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Samjhana - You live forever</title>
+        <meta
+          name="description"
+          content="Samjhana - A place where you live forever"
+        />
+        <meta property="og:url" content="https://samjhana.netlify.app/" />
+        <meta
+          property="og:title"
+          content="Samjhana — Make a sympathy card — You live forever"
+        />
+        <meta
+          property="og:description"
+          content="A place which makes you immortal"
+        />
+        <meta
+          property="og:image:url"
+          content="https://samjhana.netlify.app/Banner.png"
+        />
+      </Helmet>
       <Container maxWidth="md">
         <Box textAlign="center">
           <Typography variant="h2" component="h2" gutterBottom={true}>

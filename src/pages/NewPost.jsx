@@ -13,6 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Preview from "../components/Preview";
 import PostEdit from "../components/PostEdit";
+import { Helmet } from "react-helmet";
 
 const NewPost = () => {
   const [value, setValue] = useState("**Hello world!!!**");
@@ -59,6 +60,10 @@ const NewPost = () => {
 
   return (
     <Container style={{ marginTop: "2rem" }} maxWidth="lg">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>New post - Samjhana </title>
+      </Helmet>
       <ToastContainer
         position="top-center"
         autoClose={3000}
@@ -82,14 +87,25 @@ const NewPost = () => {
         </ToggleButtonGroup>
       </Divider>
       {mode == "preview" ? (
-        <Preview post={{title, description, image, value}} />
+        <Preview post={{ title, description, image, value }} />
       ) : (
         <form onSubmit={savePost}>
           <Typography variant="h4" gutterBottom>
             New Post
           </Typography>
 
-          <PostEdit post={{title, settitle, description, setdescription, setImage, value, setValue, loading}} />
+          <PostEdit
+            post={{
+              title,
+              settitle,
+              description,
+              setdescription,
+              setImage,
+              value,
+              setValue,
+              loading,
+            }}
+          />
         </form>
       )}
     </Container>

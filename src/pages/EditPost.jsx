@@ -16,6 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Preview from "../components/Preview";
 import PostEdit from "../components/PostEdit";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const EditPost = () => {
   const [value, setValue] = useState("**Hello world!!!**");
@@ -110,6 +111,10 @@ const EditPost = () => {
     <>
       {postFound ? (
         <Container style={{ marginTop: "2rem" }} maxWidth="lg">
+          <Helmet>
+                <meta charSet="utf-8" />
+                <title>{title} - Samjhana</title>
+            </Helmet>
           <ToastContainer
             position="top-center"
             autoClose={3000}

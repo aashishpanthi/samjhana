@@ -22,6 +22,7 @@ import { LoadingButton } from "@mui/lab";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const columns = [
   { id: "title", label: "Post Title", minWidth: 100 },
@@ -114,6 +115,10 @@ const MyPosts = () => {
 
   return (
     <Container maxWidth="lg">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Your posts- Samjhana </title>
+      </Helmet>
       <Paper
         sx={{ width: "100%", overflow: "hidden" }}
         style={{ margin: "1rem 0" }}

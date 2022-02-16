@@ -4,6 +4,7 @@ import "./styles/generatecard.css";
 import { Button } from "@mui/material";
 import skybackgroundImg from "../images/skybackground.jpg";
 import cardbg from "../images/cardbg.jpg";
+import { Helmet } from "react-helmet";
 
 const GenerateCard = () => {
   const ref = useRef(null);
@@ -27,11 +28,21 @@ const GenerateCard = () => {
 
   return (
     <section className="card-generate-section">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Generate Sympathy Card - Samjhana</title>
+      </Helmet>
       <div ref={ref} className="card-container">
         <img src={cardbg} alt="" />
-        <h1 className="main-text" contentEditable="true">Thinking of you</h1>
-        <p className="sub-text" contentEditable="true">I hope you feel surrounded by much love</p>
-        <span className="person-name" contentEditable="true">My dear ......</span>
+        <h1 className="main-text" contentEditable="true">
+          Thinking of you
+        </h1>
+        <p className="sub-text" contentEditable="true">
+          I hope you feel surrounded by much love
+        </p>
+        <span className="person-name" contentEditable="true">
+          My dear ......
+        </span>
       </div>
       <Button variant="outlined" onClick={onButtonClick} size="large">
         Download PNG

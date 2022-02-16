@@ -6,6 +6,7 @@ import { CircularProgress, Container, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import firebase from "../firebase";
 import "firebase/compat/database";
+import { Helmet } from "react-helmet";
 
 function Post() {
   const { id } = useParams();
@@ -28,6 +29,10 @@ function Post() {
     <Container style={{ marginTop: "2rem" }} maxWidth="lg">
       {post ? (
         <Box component="section" sx={{ p: 2, mt: 2 }}>
+          <Helmet>
+              <meta charSet="utf-8" />
+              <title>{post.title} - Samjhana</title>
+          </Helmet>
           <div style={{ margin: "1rem auto 2rem auto", maxWidth: "1000px" }}>
             <Typography variant="h3" component="h2">
               {post.title}

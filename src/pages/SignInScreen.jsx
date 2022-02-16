@@ -6,6 +6,7 @@ import "firebase/compat/auth";
 import "./styles/login.css";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../userContext";
+import { Helmet } from "react-helmet";
 
 // Configure FirebaseUI.
 const uiConfig = {
@@ -47,6 +48,10 @@ function SignInScreen() {
 
   return (
     <div className="signInWholeScreen">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Sign in - Samjhana </title>
+      </Helmet>
       <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
     </div>
   );

@@ -4,6 +4,7 @@ import PostCard from "../components/PostCard";
 import "./styles/signedinhome.css";
 import firebase from "../firebase";
 import "firebase/compat/database";
+import { Helmet } from "react-helmet";
 
 function SignedInHome() {
   const [postsList, setPostsList] = useState();
@@ -26,6 +27,10 @@ function SignedInHome() {
 
   return (
     <section className="posts-section">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Explore posts - Samjhana </title>
+      </Helmet>
       {postsList && <FeaturedPost post={postsList[0]} />}
       <div className="posts">
         {postsList &&
