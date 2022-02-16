@@ -11,6 +11,7 @@ import GenerateCard from "./pages/GenerateCard";
 import SignedInHome from "./pages/SignedInHome";
 import Post from "./pages/Post";
 import MyPosts from "./pages/MyPosts";
+import EditPost from "./pages/EditPost";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -21,6 +22,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path="/posts/:id" element={<Post />} />
+          <Route exact path="/edit-post/:id" element={<EditPost />} />
           <Route exact path="/myposts" element={<MyPosts />} />
           <Route exact path="/new" element={<NewPost />} />
           <Route exact path="/generatecard" element={<GenerateCard />} />
