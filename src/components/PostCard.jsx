@@ -18,10 +18,12 @@ const PostCard = ({ post }) => {
           <CardMedia component="img" height="140" image={image} alt={title} />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {title}
+              {title.length > 20 ? `${title.substring(0, 20)}...` : title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {description}
+              {description.length > 75
+                ? `${description.substring(0, 75)}...`
+                : description}
             </Typography>
           </CardContent>
         </CardActionArea>

@@ -31,12 +31,12 @@ function SignedInHome() {
         <meta charSet="utf-8" />
         <title>Explore posts - Samjhana </title>
       </Helmet>
-      {postsList && <FeaturedPost post={postsList[0]} />}
+      {postsList && <FeaturedPost post={postsList[postsList.length - 1]} />}
       <div className="posts">
         {postsList &&
           postsList.map(
             (post, index) =>
-              index !== 0 && <PostCard key={post.id} post={post} />
+              index !== (postsList.length-1) && <PostCard key={post.id} post={post} />
           )}
       </div>
     </section>
