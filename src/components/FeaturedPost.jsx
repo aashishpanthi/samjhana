@@ -14,7 +14,7 @@ const FeaturedPost = (props) => {
   
   const { id, title, description, createdAt, image } = props.post;
   return (
-    <Grid item xs={12}>
+    <Grid item xs={12} style={{minWidth: "65vw"}}>
       <Link to={`/posts/${id}`} style={{textDecoration:"inherit"}}>
         <CardActionArea>
           <Card sx={{ display: "flex" }}>

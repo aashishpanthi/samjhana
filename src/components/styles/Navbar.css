@@ -1,6 +1,12 @@
 .navbar__logo{
-    font-family: 'Cookie', cursive;
+    font-family: "Cookie", cursive;
     margin-left: 0;
     margin-right: 4rem;
     font-size:2rem;
+}
+
+.navbar__link__mobile{
+    flex: 1;
+    text-align: center;
+    margin-right: 1rem;
 }

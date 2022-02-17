@@ -30,19 +30,19 @@ const columns = [
   {
     id: "createdDate",
     label: "Post published date",
-    minWidth: 120,
+    minWidth: 95,
     align: "center",
   },
   {
     id: "updatedDate",
     label: "Post updated date",
-    minWidth: 120,
+    minWidth: 90,
     align: "center",
   },
   {
     id: "action",
     label: "Action",
-    minWidth: 100,
+    minWidth: 185,
     align: "center",
   },
 ];
@@ -190,6 +190,7 @@ const MyPosts = () => {
                                     startIcon={<EditIcon />}
                                     variant="contained"
                                     size="small"
+                                    style={{ margin: "5px" }}
                                   >
                                     Edit
                                   </Button>

@@ -121,7 +121,7 @@ const Navbar = () => {
               ))}
             </Menu>
           </Box>
-          <Link style={{ color: "inherit", textDecoration: "none" }} to="/">
+          <Link className="navbar__link__mobile" style={{ color: "inherit", textDecoration: "none" }} to="/">
             <Typography
               variant="h6"
               noWrap
