@@ -1,8 +1,7 @@
 import { Container, Typography, Box, Button } from "@mui/material";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ handleClickOpen }) => {
   return (
     <section
       style={{
@@ -57,11 +56,10 @@ const Home = () => {
           </Container>
           <Box mt={3}>
             <Button
-              component={Link}
-              to={"/login"}
               sx={{ my: 2 }}
               variant="outlined"
               size="large"
+              onClick={handleClickOpen}
             >
               Login
             </Button>

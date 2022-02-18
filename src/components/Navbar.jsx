@@ -1,20 +1,23 @@
 import { useState, useContext, useEffect } from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  Avatar,
+  Button,
+  Tooltip,
+  MenuItem,
+} from "@mui/material/";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import "./styles/Navbar.css";
 import { UserContext } from "../userContext";
-import firebase from "../firebase"
+import firebase from "../firebase";
+import "firebase/auth";
 
 const pages = [
   { name: "Generate card", link: "/generatecard" },
@@ -23,25 +26,23 @@ const pages = [
 ];
 const settings = [];
 
-const Navbar = () => {
+const Navbar = ({ props }) => {
+  const { handleClickOpen } = props;
+
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const userInfo = useContext(UserContext);
   const { user, setUser } = userInfo;
 
-  // Listen to the Firebase Auth state and set the local state.
   useEffect(() => {
-    const unregisterAuthObserver = firebase
-      .auth()
-      .onAuthStateChanged((u) => {
-        if (u) {
-          setUser(u);
-          // console.log(user.uid);
-        } else {
-          setUser(null);
-        }
-      });
-    return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
+    const unregisterAuthObserver = firebase.auth().onAuthStateChanged((u) => {
+      if (u) {
+        setUser(u);
+      } else {
+        setUser(null);
+      }
+    });
+    return () => unregisterAuthObserver(); 
   }, []);
 
   const handleOpenNavMenu = (event) => {
@@ -59,10 +60,10 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
-  const logout = () =>{
+  const logout = () => {
     firebase.auth().signOut();
     handleCloseUserMenu();
-  }
+  };
 
   return (
     <AppBar color="secondary" position="static">
@@ -121,7 +122,11 @@ const Navbar = () => {
               ))}
             </Menu>
           </Box>
-          <Link className="navbar__link__mobile" style={{ color: "inherit", textDecoration: "none" }} to="/">
+          <Link
+            className="navbar__link__mobile"
+            style={{ color: "inherit", textDecoration: "none" }}
+            to="/"
+          >
             <Typography
               variant="h6"
               noWrap
@@ -148,10 +153,9 @@ const Navbar = () => {
 
           {user == null ? (
             <Button
-              component={Link}
-              to="/login"
               variant="outlined"
               style={{ color: "inherit", borderColor: "inherit" }}
+              onClick={handleClickOpen}
             >
               Login
             </Button>
@@ -183,9 +187,9 @@ const Navbar = () => {
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 ))}
-                  <MenuItem onClick={logout}>
-                    <Typography textAlign="center">Logout</Typography>
-                  </MenuItem>
+                <MenuItem onClick={logout}>
+                  <Typography textAlign="center">Logout</Typography>
+                </MenuItem>
               </Menu>
             </Box>
           )}
