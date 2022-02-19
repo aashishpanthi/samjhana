@@ -8,14 +8,14 @@ import CardMedia from "@mui/material/CardMedia";
 import { Link } from "react-router-dom";
 
 const FeaturedPost = (props) => {
-  if(!props.post){
+  if (!props.post) {
     return <Typography variant="h6">No post found</Typography>;
   }
-  
+
   const { id, title, description, createdAt, image } = props.post;
   return (
-    <Grid item xs={12} style={{minWidth: "65vw"}}>
-      <Link to={`/posts/${id}`} style={{textDecoration:"inherit"}}>
+    <Grid item xs={12} style={{ minWidth: "65vw" }}>
+      <Link to={`/posts/${id}`} style={{ textDecoration: "inherit" }}>
         <CardActionArea>
           <Card sx={{ display: "flex" }}>
             <CardContent sx={{ flex: 1 }}>
@@ -35,7 +35,11 @@ const FeaturedPost = (props) => {
             <CardMedia
               component="img"
               sx={{ width: 160, display: { xs: "none", sm: "block" } }}
-              image={image}
+              image={
+                image
+                  ? image
+                  : "https://lh3.googleusercontent.com/pw/AM-JKLVqiCfXh8SUHtqLCanL98NJlsuWO5fSHOI23lXpfnhvoeC4MSRtbJPTz1RcfXSW0gWx1o9AoLu_RovqslCo5i4b4Xzr2KxQqCbU04RA68qYCGWi0kDx0VpSXWSMpgbgrVRfFWyQug9xTjffsGR1zv2w=w1280-h720-no"
+              }
               alt={title}
             />
           </Card>
