@@ -51,7 +51,7 @@ function Post() {
               {new Date(post.createdAt).toString().substring(4, 15)}
             </Typography>
 
-            {post.image !== null && (
+            {post.image && (
               <img
                 style={{
                   margin: "5px auto",
