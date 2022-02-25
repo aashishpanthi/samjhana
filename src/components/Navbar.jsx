@@ -23,6 +23,7 @@ const pages = [
   { name: "Generate card", link: "/generatecard" },
   { name: "New post", link: "/new" },
   { name: "My posts", link: "/myposts" },
+  { name: "Feedback", link: "/feedback" },
 ];
 const settings = [];
 
@@ -66,7 +67,7 @@ const Navbar = ({ props }) => {
   };
 
   return (
-    <AppBar color="secondary" position="static">
+    <AppBar color="primary" position="static" className="nav">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link style={{ color: "inherit", textDecoration: "none" }} to="/">
@@ -114,9 +115,9 @@ const Navbar = ({ props }) => {
                 <MenuItem key={page.name} onClick={handleCloseNavMenu}>
                   <Link
                     to={page.link}
-                    style={{ color: "inherit", textDecoration: "none" }}
+                    className="navbar__link"
                   >
-                    <Typography textAlign="center">{page.name}</Typography>
+                    <Typography textAlign="center" >{page.name}</Typography>
                   </Link>
                 </MenuItem>
               ))}
@@ -124,7 +125,6 @@ const Navbar = ({ props }) => {
           </Box>
           <Link
             className="navbar__link__mobile"
-            style={{ color: "inherit", textDecoration: "none" }}
             to="/"
           >
             <Typography
@@ -145,6 +145,7 @@ const Navbar = ({ props }) => {
                 key={page.name}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
+                className="navbar__link"
               >
                 {page.name}
               </Button>

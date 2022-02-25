@@ -1,12 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 .navbar__logo{
-    font-family: "Cookie", cursive;
+    font-family: "Cookie", cursive !important;
     margin-left: 0;
     margin-right: 4rem;
-    font-size:2rem;
+    font-size:2rem !important;
 }
 
 .navbar__link__mobile{
     flex: 1;
     text-align: center;
     margin-right: 1rem;
+}
+
+.nav{
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar__link{
+    text-transform: capitalize !important;
 }
