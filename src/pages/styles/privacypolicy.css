@@ -1,0 +1,30 @@
+.privacyPolicy {
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+  width: 100%;
+  max-width: 900px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: all 0.2s;
+  backface-visibility: hidden;
+  padding: 50px 10px;
+}
+
+.privacyPolicyHeading {
+  margin-top: 70px;
+  margin-bottom: 30px;
+  font-size: 3rem;
+}
+
+.privacyPolicyParagraph {
+  font-size: 1.5rem;
+}
+
+.privacyPolicyGif {
+  width: 100%;
+  min-height: 300px;
+  max-width: 600px;
+  height: 100%;
+}

@@ -101,7 +101,7 @@ function TermsAndCoditions() {
               <h6 className="serviceLead">Privacy</h6>
               <p className="serviceDetails">
                 Read more about privacy policy{" "}
-                <Link style={{ textDecoration: "none" }} to="/pricacy-policy">
+                <Link style={{ textDecoration: "none" }} to="/privacy-policy">
                   here
                 </Link>
                 .

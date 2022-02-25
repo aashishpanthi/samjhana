@@ -13,6 +13,7 @@ import MyPosts from "./pages/MyPosts";
 import EditPost from "./pages/EditPost";
 import SignInPopup from "./components/SignInPopup";
 import TermsAndCoditions from "./pages/TermsAndCoditions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -38,6 +39,7 @@ function App() {
           <Route exact path="/new" element={<NewPost />} />
           <Route exact path="/generatecard" element={<GenerateCard />} />
           <Route exact path="/terms-and-conditions" element={<TermsAndCoditions />} />
+          <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route exact path="/" element={user !== null ? (<SignedInHome />):(<Home handleClickOpen={handleClickOpen} />)} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
