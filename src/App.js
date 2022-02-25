@@ -14,6 +14,7 @@ import EditPost from "./pages/EditPost";
 import SignInPopup from "./components/SignInPopup";
 import TermsAndCoditions from "./pages/TermsAndCoditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Feedback from "./pages/Feedback";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/edit-post/:id" element={<EditPost />} />
           <Route exact path="/myposts" element={<MyPosts />} />
           <Route exact path="/new" element={<NewPost />} />
+          <Route exact path="/feedback" element={<Feedback />} />
           <Route exact path="/generatecard" element={<GenerateCard />} />
           <Route exact path="/terms-and-conditions" element={<TermsAndCoditions />} />
           <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />

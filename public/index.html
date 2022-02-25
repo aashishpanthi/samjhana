@@ -12,28 +12,44 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
     <title>Samjhana - You live forever</title>
-    <meta name="description" content="Samjhana - A place where you live forever" />
-    <meta name="keywords" content="sympathy card generator, my last wish, complete someones lastwish, Aashish Panthi" />
+    <meta
+      name="description"
+      content="Samjhana - A place where you live forever"
+    />
+    <meta
+      name="keywords"
+      content="sympathy card generator, my last wish, complete someones lastwish, Aashish Panthi"
+    />
     <meta property="og:url" content="https://samjhana.netlify.app/" />
     <meta
       property="og:title"
       content="Samjhana — Make a sympathy card — You live forever"
     />
-    <meta property="og:description" content="A place which makes you immortal" />
     <meta
-      property="og:image"
-      content="%PUBLIC_URL%/Banner.png"
+      property="og:description"
+      content="A place which makes you immortal"
     />
+    <meta property="og:image" content="%PUBLIC_URL%/Banner.png" />
     <meta
       property="og:image:url"
       content="https://samjhana.netlify.app/Banner.png"
     />
-    <meta
-      property="twitter:image"
-      content="%PUBLIC_URL%/Banner.png"
-    />
+    <meta property="twitter:image" content="%PUBLIC_URL%/Banner.png" />
   </head>
   <body>
+    <form
+      name="feedback"
+      method="post"
+      netlify
+      netlify-honeypot="bot-field"
+      data-netlify="true"
+      action="/"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="text" name="name" />
+      <input type="text" name="message" />
+    </form>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
