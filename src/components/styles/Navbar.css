@@ -19,4 +19,6 @@
 
 .navbar__link{
     text-transform: capitalize !important;
+    color: inherit;
+    text-decoration: none;
 }

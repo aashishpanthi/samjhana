@@ -6,31 +6,39 @@ import { useNavigate } from "react-router-dom";
 
 const Feedback = () => {
   const [name, setName] = useState("Anonymous");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    // check if the user has entered a message
+    if(message === null) {
+        swal("Oops!", "Please enter a message", "error");
+        return false;
+    }
+
+    // get the inputs from the form
     const formElements = [...event.currentTarget.elements];
     const isValid =
-      formElements.filter((elem) => elem.name === "bot-field")[0].value === "";
-
+    formElements.filter((elem) => elem.name === "bot-field")[0].value === "";
+    
     const validFormElements = isValid ? formElements : [];
-
+    
     if (validFormElements.length < 1) {
       swal("Invalid form", "Please fill out the form", "error");
     } else {
       const filledOutElements = validFormElements
-        .filter((elem) => !!elem.value)
-        .map(
-          (element) =>
-            encodeURIComponent(element.name) +
-            "=" +
-            encodeURIComponent(element.value)
+      .filter((elem) => !!elem.value)
+      .map(
+        (element) =>
+        encodeURIComponent(element.name) +
+        "=" +
+        encodeURIComponent(element.value)
         )
         .join("&");
-
+        
+        // send the message to the server
       await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -92,6 +100,7 @@ const Feedback = () => {
           onChange={(e) => setMessage(e.target.value)}
           helperText="Write what you didn't like about the platform."
           fullWidth
+          required
         />
 
         <br />

@@ -20,6 +20,7 @@ import firebase from "../firebase";
 import "firebase/auth";
 
 const pages = [
+  { name: "Home", link: "/" },
   { name: "Generate card", link: "/generatecard" },
   { name: "New post", link: "/new" },
   { name: "My posts", link: "/myposts" },
@@ -125,6 +126,7 @@ const Navbar = ({ props }) => {
           </Box>
           <Link
             className="navbar__link__mobile"
+            style={{ color: "inherit", textDecoration: "none" }}
             to="/"
           >
             <Typography
