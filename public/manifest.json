@@ -1,6 +1,7 @@
 {
   "short_name": "Samjhana",
-  "name": "Immortal forever",
+  "name": "Samjhana - Write your last wish",
+  "description":"A platform to write your last wish and fulfill others also.",
   "icons": [
     {
       "src": "favicon.ico",
