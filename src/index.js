@@ -5,7 +5,6 @@ import App from './App';
 import './fonts/Cookie/Cookie-Regular.ttf';
 import './fonts/Crete_Round/CreteRound-Italic.ttf';
 import './fonts/Roboto/Roboto-Medium.ttf';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -13,5 +12,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-serviceWorkerRegistration.register();
 reportWebVitals();
